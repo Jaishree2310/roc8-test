@@ -1,104 +1,20 @@
-"use client";
-
-import React, { useState } from 'react';
-import { EmailItem } from '../components/q1/EmailItem';
-import { EmailBody } from '../components/q1/EmailBody';
-import { useEmails } from './hooks/useEmails';
-import { Email, FilterType } from './types/email';
-import { FilterButton } from '@/components/q1/FilterButton';
-
-export default function EmailApp() {
-  const { 
-    emails, 
-    loading, 
-    hasMore, 
-    fetchNextPage, 
-    markAsRead, 
-    toggleFavorite 
-  } = useEmails();
-  
-  const [selectedEmail, setSelectedEmail] = useState<Email | null>(null);
-  const [filterType, setFilterType] = useState<FilterType>('all');
-
-  const handleEmailClick = (email: Email) => {
-    setSelectedEmail(email);
-    if (!email.isRead) {
-      markAsRead(email.id);
-    }
-  };
-
-  const filteredEmails = React.useMemo(() => {
-    return emails.filter(email => {
-      switch (filterType) {
-        case 'unread':
-          return !email.isRead;
-        case 'read':
-          return email.isRead;
-        case 'favorites':
-          return email.isFavorite;
-        default:
-          return true;
-      }
-    });
-  }, [emails, filterType]);
-
+export default function Home() {
   return (
-    <div className="flex flex-col h-screen bg-background">
-      <div className="p-8">
-        <div className="flex gap-2 items-center">
-          <div className="text-text text-center">Filter By:</div>
-          <FilterButton
-            label="Unread"
-            filterType="unread"
-            currentFilter={filterType}
-            onClick={setFilterType}
-          />
-          <FilterButton
-            label="Read"
-            filterType="read"
-            currentFilter={filterType}
-            onClick={setFilterType}
-          />
-          <FilterButton
-            label="Favorites"
-            filterType="favorites"
-            currentFilter={filterType}
-            onClick={setFilterType}
-          />
-        </div>
-      </div>
-      <div className="flex flex-1 overflow-hidden">
-        <div className="w-1/2 overflow-y-auto px-4">
-          {loading && <div className="text-text">Loading...</div>}
-          {filteredEmails.map((email) => (
-            <EmailItem
-              key={email.id}
-              email={email}
-              isSelected={selectedEmail?.id === email.id}
-              onClick={handleEmailClick}
-            />
-          ))}
-          {hasMore && (
-            <button
-              onClick={fetchNextPage}
-              className="w-full py-2 text-center text-accent hover:text-accent/80 transition-colors"
-            >
-              Load More
-            </button>
-          )}
-        </div>
-        <div className="w-1/2 h-full pb-6">
-          {selectedEmail ? (
-            <EmailBody
-              email={selectedEmail}
-              onFavoriteToggle={toggleFavorite}
-            />
-          ) : (
-            <div className="h-full flex items-center justify-center text-text">
-              Select an email to read
-            </div>
-          )}
-        </div>
+    <div className="min-h-screen bg-white flex flex-col justify-center items-center gap-8">
+      <h1 className="text-2xl font-bold text-black">Technical Assessment</h1>
+      
+      <div className="flex flex-col gap-4">
+        <a href="/q1">
+          <button className="w-64 py-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+            Question 1 - Email Client
+          </button>
+        </a>
+
+        <a href="/q2">
+          <button className="w-64 py-4 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors">
+            Question 2 - Charts
+          </button>
+        </a>
       </div>
     </div>
   );
