@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
 import Papa from 'papaparse';
-import type { ParseResult, ParseError, ParseConfig } from 'papaparse';
+
+export const dynamic = 'force-dynamic'
 
 interface DataRow {
   Age: string;
