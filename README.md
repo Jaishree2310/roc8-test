@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Roc8 Take Home Assignment
 
-## Getting Started
+This repository contains two React applications built as part of the Roc8 take-home assignment.
 
-First, run the development server:
+🚀 **[Live Demo](https://roc8-test-kappa.vercel.app/)**
+
+## Applications
+
+### 1. Email Client (/q1)
+A responsive email client application built with React, featuring master-detail view, real-time filtering, and email management.
+
+![image](https://github.com/user-attachments/assets/bc525eab-d96b-472b-9645-908b699aba9c)
+
+
+**Key Features:**
+- Split-screen master-detail view
+- Real-time filtering (unread/read/favorites)
+- Lazy loading of email content
+- Pagination support
+- Responsive design
+
+
+### 2. Data Visualization Dashboard (/q2)
+An interactive dashboard with multiple chart visualizations and filtering capabilities.
+
+![image](https://github.com/user-attachments/assets/066ff77b-686d-44f0-bb50-9fbbc2906c4e)
+
+
+**Key Features:**
+- Interactive bar and line charts
+- Age and gender filtering
+- Date range selection
+- Real-time chart updates
+
+## Tech Stack
+- React
+- TypeScript
+- Next.js 13
+- Tailwind CSS
+- Recharts
+
+## Local Development
 
 ```bash
+# Clone the repository
+git clone [repository-url]
+
+# Install dependencies
+npm install
+
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Open http://localhost:3000 in your browser
+```
+## Project Structure
+```shell
+.
+├── .gitignore
+├── next.config.js
+├── package.json
+├── package-lock.json
+├── postcss.config.js
+├── public
+│   ├── next.svg
+│   └── vercel.svg
+├── README.md
+├── src
+│   ├── app
+│   │   ├── api
+│   │   │   └── data
+│   │   │       └── route.ts
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── hooks
+│   │   │   └── useEmails.ts
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── q1
+│   │   │   └── page.tsx
+│   │   ├── q2
+│   │   │   └── page.tsx
+│   │   ├── services
+│   │   │   └── api.ts
+│   │   └── types
+│   │       ├── chart.ts
+│   │       └── email.ts
+│   ├── components
+│   │   ├── q1
+│   │   │   ├── EmailBody.tsx
+│   │   │   ├── EmailItem.tsx
+│   │   │   └── FilterButton.tsx
+│   │   └── q2
+│   │       ├── BarChartComponent.tsx
+│   │       ├── Filters.tsx
+│   │       └── LineChartComponent.tsx
+│   └── public
+│       └── data.csv
+├── tailwind.config.ts
+└── tsconfig.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Performance Considerations
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Lazy loading of email content
+2. Client-side filtering
+3. Optimized chart re-renders
+4. Responsive design for all screen sizes
